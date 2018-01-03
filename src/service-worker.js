@@ -4,7 +4,6 @@ const CURRENT_CACHE_NAME = 'version-1.04';
 let filesToCache = [
 	'./',
 	'./index.html',
-  './serviceWorkerSettings.js',
 	'./js/bundle.js',
 	'./style/style.css',
   './img/board.png',
