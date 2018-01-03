@@ -26,7 +26,7 @@ Main features of the App:
 ### On mobile devices
 <p align="center">
 
-  <img src="https://user-images.githubusercontent.com/29863991/34538083-2ff4ec76-f0cb-11e7-83c9-e51ee3981158.png" alt="screenshot-mobile" width="60%" height="auto" align="center">
+  <img src="https://user-images.githubusercontent.com/29863991/34538377-70b8a440-f0cc-11e7-94e7-9a4c343af429.png" alt="screenshot-mobile" width="40%" height="auto" align="center">
 
 </p>
 
