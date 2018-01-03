@@ -2,9 +2,12 @@ $baseFontSize: 10px;
 $transitionTime: 0.2s;
 $mobileWidth: 768px;
 $pegBoardSize: 70vh;
-$pegBoardMobileSize: 84vw;
+$pegBoardMobileSize: 98vw;
 $pegHolderSize: 5vh;
-$pegHolderMobileSize: 6vw;
+$pegHolderMobileSize: 10vw;
+$pegHolderMobileMargin: ($pegHolderMobileSize / 7);
+$pegSize: 4.3vh;
+$pegMobileSize: ( $pegHolderMobileSize * ($pegSize / $pegHolderSize) );
 $buttonScale: 1;
 $pageFont: 'Kalam', cursive;
 

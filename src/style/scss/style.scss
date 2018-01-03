@@ -260,7 +260,7 @@ body
     @include forScreenWith($mobileWidth)
     {
       @include size($pegHolderMobileSize);
-      margin: ($pegHolderMobileSize / 2.5);
+      margin: ($pegHolderMobileMargin);
     }
 
 	  &--withPeg:hover
@@ -287,13 +287,13 @@ body
 
   &__peg
   {
-    width: 4.3vh;
-    height: 4.3vh;
+    width: $pegSize;
+    height: $pegSize;
     position: absolute;
     @include forScreenWith($mobileWidth)
     {
-      width: 5.16vw;
-      height: 5.16vw;
+      width: $pegMobileSize;
+      height: $pegMobileSize;
     }
   }
 }

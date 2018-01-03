@@ -51,7 +51,7 @@
   ],
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
-  "start_url": "./?utm_source=web_app_manifest",
+  "start_url": "/",
   "display": "standalone",
 	"orientation" : "portrait"
 }
