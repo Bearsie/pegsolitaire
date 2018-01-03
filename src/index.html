@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Peg Solitaire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Free Web tutorials on HTML and CSS">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kalam:400,700">
+  <!-- build:css -->
+  <link rel="stylesheet" href="style/style.css"/>
+  <!-- endbuild -->
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="img/icons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/icons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/icons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/icons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/icons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/icons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/icons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-TileImage" content="img/icons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta property="og:site_name" content="Peg Solitaire"/>
+  <meta property="og:title" content="Peg Solitaire"/>
+  <meta property="og:description" content="Empty the game board in a way that only one peg remains."/>
+  <meta property="og:type" content="game"/>
+  <meta property="og:image" content="http://bearsie.github.io/pegsolitaire/img/og_image.png"/>
+  <meta property="og:url" content="http://bearsie.github.io/pegsolitaire/"/>
+
+</head>
+<body>
+  <header class="header">Peg Solitaire</header>
+
+  <div class="flexContainer">
+
+    <div class="flexContainer flexContainer--narrow">
+        <nav class="navigation">
+            <button id="newGameButton" type="button" class="navigation__button">
+              New game</button>
+        </nav>
+
+        <div class="scorePanel">
+            <p class="scorePanel__title">Moves: </p>
+            <p class="scorePanel__score">0</p>
+        </div>
+        <div id="pegBoard" class="pegBoard"></div>
+        <div id="errorMessage" class="bottomBar"> </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">2017</footer>
+
+  <div id="modal" class="modal">
+      <div id="modalContent" class="modal__contentWrapper">
+
+          <header class="modal__header">Message</header>
+
+
+          <div id="modalBody" class="modal__body"><p class="modal__message"></p></div>
+
+      	  <nav class="navigation">
+      			<button id="modalOkButton" class="navigation__button  navigation__button--first  navigation__button--modal">OK</button>
+      			<button id="modalCancelButton" class="navigation__button  navigation__button--last  navigation__button--modal">Cancel</button>
+      	  </nav>
+
+      </div>
+
+  </div>
+
+  <script src="serviceWorkerSettings.js"></script>
+  <script src="service-worker.js"></script>
+  <script src="js/bundle.js"></script>
+  
+</body>
+</html>

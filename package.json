@@ -1,0 +1,42 @@
+{
+  "name": "pegsolitaire",
+  "version": "1.0.0",
+  "description": "A one player game, which objective is to empty the game board in a way that only one peg remains.",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bearsie/pegsolitaire.git"
+  },
+  "keywords": [
+    "pegsolitaire",
+    "solitaire",
+    "game"
+  ],
+  "author": "Wojciech Niedzwiedz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bearsie/pegsolitaire/issues"
+  },
+  "homepage": "https://github.com/Bearsie/pegsolitaire#readme",
+  "devDependencies": {
+    "browser-sync": "^2.23.1",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.2",
+    "pump": "^2.0.0",
+    "run-sequence": "^2.2.0"
+  }
+}

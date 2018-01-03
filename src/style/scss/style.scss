@@ -1,0 +1,299 @@
+@charset 'utf-8';
+@import 'settings';
+@import 'mixins';
+
+html
+{
+  font-family: $pageFont;
+  font-size: $baseFontSize;
+  color: $fontColor;
+}
+
+body
+{
+  background: url($bodyImageSrc);
+  margin: 0 ;
+  padding: 0 ;
+}
+
+.header
+{
+  font-size: 6rem;
+  line-height: 6rem;
+  font-weight: 700;
+  text-align: center;
+  background: $headerColor;
+  padding: 4rem 0 3rem 0;
+  border-bottom: 0.1rem solid $fontColor;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include forScreenWith($mobileWidth)
+  {
+    padding: 2rem 0 1rem 0;
+    font-size: 4rem;
+  	border: 0.1rem solid $fontColor ;
+  }
+
+}
+
+
+.flexContainer
+{
+  margin-bottom: 4rem;
+  @include flex(column, center, none);
+  width: 100%;
+
+  @at-root #{&}--narrow
+  {
+    width: 60%;
+
+    @include forScreenWith($mobileWidth)
+    {
+      width: 100%;
+    }
+  }
+
+}
+
+
+.navigation
+{
+  width: 100%;
+  @include flex(row, center, none);
+  @include forScreenWith($mobileWidth)
+	{
+    align-items: stretch;
+  }
+
+  .navigation__button
+  {
+	  width: (10rem * $buttonScale);
+    height: (4rem * $buttonScale);
+    border: (0.1rem * $buttonScale) solid $fontColor;
+    border-bottom-width: (0.2rem * $buttonScale);
+    border-top: none;
+    border-radius: 0 0 (0.8rem * $buttonScale) (0.8rem * $buttonScale) ; /*top-left, top-right, bottom-right, bottom-left*/
+    background: $buttonColor ;
+    font-family: $pageFont;
+    font-weight: 700;
+    color: $fontColor;
+    font-size: (1.8rem * $buttonScale);
+
+	  &:hover
+	  {
+      background: $buttonDarkerColor ;
+      color: $whiteHighlight;
+      cursor: pointer;
+	  }
+
+	  &:active
+	  {
+	    border: (0.1rem * $buttonScale) solid $whiteHighlight ;
+	  }
+
+	  &:focus
+	  {
+	    outline: none;
+	  }
+
+    @include forScreenWith($mobileWidth)
+    {
+  	  width: 100%;
+  	}
+  }
+
+  .navigation__button--modal
+  {
+    border-color: $popUpColor ;
+
+	  &:active
+	  {
+	    border-color: $fontColor;
+	  }
+  }
+
+  .navigation__button--first
+  {
+    @include forScreenWith($mobileWidth)
+    {
+	    border-radius: 0 0 0 0.8rem; /*bottom-left*/
+    }
+	}
+
+  .navigation__button--last
+	{
+    @include forScreenWith($mobileWidth)
+    {
+      border-radius: 0 0 0.8rem 0; /*bottom-right*/
+    }
+	}
+
+}
+
+
+.scorePanel
+{
+  font-size: 2rem;
+  font-weight: 700;
+
+  &__title
+  {
+    display: inline-block;
+  }
+
+  &__score
+  {
+    display: inline-block;
+    margin-left: 2rem;
+  }
+}
+
+
+.bottomBar
+{
+  position:fixed;
+  text-align: center;
+  width: 100%;
+  height: 0;
+  bottom: 0%;
+  background: $bottomBarColor;
+  color: $whiteHighlight;
+  font-size: 2rem;
+  font-weight: 400;
+  transition: height $transitionTime ease-out;
+
+  &--show
+  {
+    padding: 0.5rem;
+    height: 3rem;
+  }
+}
+
+.footer
+{
+  padding: 2rem 0 ;
+  font-size: 2rem;
+  text-align: center;
+  color: $headerColor ;
+  width: 100%;
+  background: $footerColor ;
+}
+
+
+.modal
+{
+  position: fixed;
+  @include pageFullSize;
+  background: $modalColor;
+  z-index: 1;
+  @include flex(column, center, none);
+  display: none;
+
+  &__contentWrapper
+  {
+    width: 50%;
+    margin-top: 30vh;
+    text-align: center;
+    height: auto;
+    @include forScreenWith($mobileWidth)
+    {
+      width: 80%;
+    }
+  }
+
+  &__header
+  {
+    border-radius: 1rem 1rem 0 0 ;
+    color: $footerColor;
+    background: $headerColor;
+    padding: 0;
+    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  &__body
+  {
+	  width: 100% ;
+	  height: auto;
+	  overflow: auto;
+	  background: $popUpColor ;
+	  border-radius: 0 0 1rem 1rem;
+    @include forScreenWith($mobileWidth)
+	  {
+	    border-radius: 0;
+	  }
+  }
+
+  &__message
+  {
+    padding: 0 2rem 0 2rem ;
+    font-size: 2rem;
+  }
+}
+
+
+.pegBoard
+{
+  border: 0.1rem solid $fontColor;
+  background: url($pegBoardImageSrc) no-repeat;
+  @include size($pegBoardSize);
+  box-shadow: 0 0 2rem black ;
+  @include flex(column, center);
+  @include forScreenWith($mobileWidth)
+  {
+    @include size($pegBoardMobileSize);
+  }
+
+  &__row
+  {
+    @include flex(row);
+  }
+
+  &__pegHolder
+  {
+    background: url($pegHolderImageSrc) no-repeat;
+    @include size($pegHolderSize);
+    margin: ($pegHolderSize / 2.5);
+    @include flex(row, center);
+    @include forScreenWith($mobileWidth)
+    {
+      @include size($pegHolderMobileSize);
+      margin: ($pegHolderMobileSize / 2.5);
+    }
+
+	  &--withPeg:hover
+    {
+      box-shadow: 0 0 1rem $footerColor ;
+      cursor: pointer;
+    }
+
+    &--droppable
+    {
+      box-shadow: 0 0 1rem $footerColor ;
+    }
+
+    &--nonDroppable
+    {
+      box-shadow: 0 0 1rem $bottomBarColor;
+
+	    &:hover
+	    {
+		    box-shadow: 0 0 1rem $bottomBarColor;
+	    }
+    }
+  }
+
+  &__peg
+  {
+    width: 4.3vh;
+    height: 4.3vh;
+    position: absolute;
+    @include forScreenWith($mobileWidth)
+    {
+      width: 5.16vw;
+      height: 5.16vw;
+    }
+  }
+}

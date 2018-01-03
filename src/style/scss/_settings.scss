@@ -1,0 +1,23 @@
+$baseFontSize: 10px;
+$transitionTime: 0.2s;
+$mobileWidth: 768px;
+$pegBoardSize: 70vh;
+$pegBoardMobileSize: 84vw;
+$pegHolderSize: 5vh;
+$pegHolderMobileSize: 6vw;
+$buttonScale: 1;
+$pageFont: 'Kalam', cursive;
+
+$fontColor: hsla(38, 48%, 32%, 1);
+$headerColor: hsla(40, 65%, 67%, 1);
+$buttonColor: hsla(41, 82%, 78%, 1);
+$buttonDarkerColor: darken( $buttonColor, 40%);
+$whiteHighlight: hsla(0, 100%, 100%, 1);
+$popUpColor: hsla(40, 85%, 92%, 1);
+$bottomBarColor: rgba(255,0,0,0.5);
+$footerColor: darken( adjust-hue($fontColor, 1deg ), 10%);
+$modalColor: rgba(0, 0, 0, 0.5);
+
+$bodyImageSrc: '../img/vintage-concrete.png';
+$pegBoardImageSrc: '../img/board.png';
+$pegHolderImageSrc: '../img/pegHolder.png';
