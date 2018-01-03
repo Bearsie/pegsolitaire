@@ -1,3 +1,5 @@
+"use-strict"
+
 const CURRENT_CACHE_NAME = 'version-1.03';
 let filesToCache = [
 	'./',
@@ -29,13 +31,14 @@ let filesToCache = [
 	'./img/icons/apple-touch-icon-144x144.png',
 	'./img/icons/apple-touch-icon-152x152.png',
 	'./img/icons/apple-touch-icon-180x180.png',
-	'./img/icons/favicon-32x32.png',
-	'./img/icons/android-chrome-192x192.png',
+	'./img/icons/apple-touch-icon.png',
 	'./img/icons/favicon-16x16.png',
+	'./img/icons/favicon-32x32.png',
 	'./img/icons/mstile-70x70.png',
+	'./img/icons/mstile-144x144.png',
 	'./img/icons/mstile-150x150.png',
-	'./img/icons/mstile-310x310.png',
 	'./img/icons/mstile-310x150.png',
+	'./img/icons/mstile-310x310.png',
 	'./manifest.json',
 	'./browserconfig.xml',
 	'./favicon.ico'
