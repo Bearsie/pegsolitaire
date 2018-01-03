@@ -255,7 +255,7 @@ body
   {
     background: url($pegHolderImageSrc) no-repeat;
     @include size($pegHolderSize);
-    margin: ($pegHolderSize / 2.5);
+    margin: ($pegHolderMargin);
     @include flex(row, center);
     @include forScreenWith($mobileWidth)
     {
