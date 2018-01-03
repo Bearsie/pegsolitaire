@@ -1,6 +1,6 @@
 "use-strict"
 
-const CURRENT_CACHE_NAME = 'version-1.05';
+const CURRENT_CACHE_NAME = 'version-1.06';
 let filesToCache = [
 	'./',
 	'./index.html',
