@@ -1,4 +1,4 @@
-const CURRENT_CACHE_NAME = 'version-1.0';
+const CURRENT_CACHE_NAME = 'version-1.01';
 let filesToCache = [
 	'./',
 	'./index.html',

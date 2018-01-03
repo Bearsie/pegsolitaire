@@ -33,26 +33,52 @@ const prodFolder = 'docs/',
       imgInput = srcFolder + 'img/**/*.{jpg,jpeg,png,gif}',
       imgOutput = prodFolder + 'img/',
       htmlInput = srcFolder + '/*.html',
+      srcMainInput = srcFolder + '/*.{html,js,json,xml,ico}',
       jsFilename = 'bundle.js',
       cssSource = 'css/style.css',
       jsreplaceout = 'js/bundle.js',
       filesToCopy = ['src/browserconfig.xml',
                      'src/favicon.ico',
-                     'src/manifest.json',
-                     'src/service-worker.js',
-                     'src/serviceWorkerSettings.js'
+                     'src/manifest.json'
                    ],
+      jsSwInput = srcFolder + '*.js',
       prodFolderDel = prodFolder + "**/*.*",
       srcCompilationDel = [ srcFolder + 'js/*.js', srcFolder + 'style/*.css'];
 
 
 gulp.task('default', function(callback){
-  runSequence('runLocalServer',
-              ['compileSassToCss', 'bundleJSfiles', 'compressImages', 'copyFiles', 'cleanHtml'],
-              ['cleanCss', 'uglifyJS'],
+  runSequence('cleanSrcCompiledFiles',
+              'runLocalServer',
+              ['compileSassToCss', 'bundleJSfiles'],
               'watch',
               callback);
 });
+
+
+gulp.task('build', function(callback){
+  runSequence( 'cleanProdFolder',
+              [ 'compressImages',
+                'copyFiles',
+                'cleanHtml',
+                'cleanCss',
+                'uglifyJS',
+                'uglifyJSserviceWorkers'
+              ],
+              callback);
+});
+
+
+gulp.task('clean', ['cleanProdFolder', 'cleanSrcCompiledFiles']);
+
+gulp.task('cleanProdFolder', function() {
+  return del(prodFolderDel);
+});
+
+gulp.task('cleanSrcCompiledFiles', function() {
+  return del(srcCompilationDel);
+});
+
+
 
 gulp.task('runLocalServer', function() {
   browserSync({
@@ -76,16 +102,6 @@ gulp.task('compileSassToCss', function(callback) {
   );
 });
 
-gulp.task('cleanCss', function(callback) {
-  pump([
-      gulp.src(cssInput),
-      cleanCSS(),
-      gulp.dest(cssOutput)
-    ],
-    callback
-  );
-});
-
 gulp.task('bundleJSfiles', function(callback) {
   pump([
       gulp.src(es6Input),
@@ -98,15 +114,18 @@ gulp.task('bundleJSfiles', function(callback) {
   );
 });
 
-gulp.task('uglifyJS', function(callback) {
-  pump([
-      gulp.src(jsInput),
-      uglify(),
-      gulp.dest(jsOutput)
-    ],
-    callback
-  );
+gulp.task('watch', function() {
+  gulp.watch(scssInput, ['compileSassToCss']);
+  gulp.watch(es6Input, ['bundleJSfiles', 'reloadBrowsers']);
+  gulp.watch(imgInput, ['reloadBrowsers']);
+  gulp.watch(srcMainInput, ['reloadBrowsers']);
 });
+
+gulp.task('reloadBrowsers', function() {
+  browserSync.reload();
+});
+
+
 
 gulp.task('compressImages', function(callback) {
   pump([
@@ -117,6 +136,12 @@ gulp.task('compressImages', function(callback) {
     ],
     callback
   );
+});
+
+
+gulp.task('copyFiles', function(){
+  return gulp.src(filesToCopy)
+      .pipe(gulp.dest(prodFolder));
 });
 
 gulp.task('cleanHtml', function(callback) {
@@ -136,28 +161,32 @@ gulp.task('cleanHtml', function(callback) {
   );
 });
 
-gulp.task('copyFiles', function(){
-  return gulp.src(filesToCopy)
-      .pipe(gulp.dest(prodFolder));
+gulp.task('cleanCss', function(callback) {
+  pump([
+      gulp.src(cssInput),
+      cleanCSS(),
+      gulp.dest(cssOutput)
+    ],
+    callback
+  );
 });
 
-gulp.task('watch', function() {
-  gulp.watch(scssInput, ['compileSassToCss', 'cleanCss']);
-  gulp.watch(es6Input, ['bundleJSfiles', 'uglifyJS', 'reloadBrowsers']);
-  gulp.watch(imgInput, ['compressImages', 'reloadBrowsers']);
-  gulp.watch(htmlInput, ['cleanHtml', 'reloadBrowsers']);
+gulp.task('uglifyJS', function(callback) {
+  pump([
+      gulp.src(jsInput),
+      uglify(),
+      gulp.dest(jsOutput)
+    ],
+    callback
+  );
 });
 
-gulp.task('reloadBrowsers', function() {
-  browserSync.reload();
-});
-
-gulp.task('clean', ['cleanDocs', 'cleanSrcCompiledFiles']);
-
-gulp.task('cleanDocs', function() {
-  return del(prodFolderDel);
-});
-
-gulp.task('cleanSrcCompiledFiles', function() {
-  return del(srcCompilationDel);
+gulp.task('uglifyJSserviceWorkers', function(callback) {
+  pump([
+      gulp.src(jsSwInput),
+      uglify(),
+      gulp.dest(prodFolder)
+    ],
+    callback
+  );
 });
