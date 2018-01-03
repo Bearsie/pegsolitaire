@@ -47,10 +47,9 @@ const prodFolder = 'docs/',
 
 
 gulp.task('default', function(callback){
-  runSequence('cleanSrcCompiledFiles',
-              'runLocalServer',
+  runSequence('watch',
+              'cleanSrcCompiledFiles',
               ['compileSassToCss', 'bundleJSfiles'],
-              'watch',
               callback);
 });
 
@@ -114,7 +113,7 @@ gulp.task('bundleJSfiles', function(callback) {
   );
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['runLocalServer'], function() {
   gulp.watch(scssInput, ['compileSassToCss']);
   gulp.watch(es6Input, ['bundleJSfiles', 'reloadBrowsers']);
   gulp.watch(imgInput, ['reloadBrowsers']);

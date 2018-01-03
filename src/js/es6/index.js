@@ -149,8 +149,12 @@ function addEventHandlersFor( pointingMethod, pegHolder )
 			let peg = startPoint.currentTarget.firstElementChild;
 			startPoint.preventDefault();  //prevent from hover effect and scrolling during touch move
 			errorMessage.hide();
-			document.addEventListener( `${pointingMethod}move`, dragPegTo , false );
-			pegHolder.addEventListener( eventTypeEnd, checkAbbilityToDropPeg, false );
+
+			if (peg)
+			{
+				document.addEventListener( `${pointingMethod}move`, dragPegTo , false );
+				pegHolder.addEventListener( eventTypeEnd, checkAbbilityToDropPeg, false );
+			}
 
 			function dragPegTo( destination )
 			{

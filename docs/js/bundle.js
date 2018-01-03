@@ -112,7 +112,9 @@ function createPegIn(pegHolder)
 {let peg=document.createElement("IMG");peg.id="peg"+pegHolder.id.slice(9);peg.className="pegBoard__peg";peg.src="img/peg.png";pegHolder.appendChild(peg);}
 function addEventHandlersFor(pointingMethod,pegHolder)
 {let eventType=getEventType(pointingMethod);let eventTypeStart=eventType.start;let eventTypeEnd=eventType.end;pegHolder.addEventListener(eventTypeStart,function(startPoint)
-{let dropDestination=startPoint.currentTarget;let peg=startPoint.currentTarget.firstElementChild;startPoint.preventDefault();errorMessage.hide();document.addEventListener(`${pointingMethod}move`,dragPegTo,false);pegHolder.addEventListener(eventTypeEnd,checkAbbilityToDropPeg,false);function dragPegTo(destination)
+{let dropDestination=startPoint.currentTarget;let peg=startPoint.currentTarget.firstElementChild;startPoint.preventDefault();errorMessage.hide();if(peg)
+{document.addEventListener(`${pointingMethod}move`,dragPegTo,false);pegHolder.addEventListener(eventTypeEnd,checkAbbilityToDropPeg,false);}
+function dragPegTo(destination)
 {if(pointingMethodIsTouch(pointingMethod))
 {destination=destination.touches[0];}
 move(peg).to(destination);dropDestination=determineDropDestination(destination);}
