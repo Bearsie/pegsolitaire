@@ -36,7 +36,6 @@ const prodFolder = 'docs/',
       srcMainInput = srcFolder + '/*.{html,js,json,xml,ico}',
       jsFilename = 'bundle.js',
       cssSource = 'style/style.css',
-      jsreplaceout = 'js/bundle.js',
       filesToCopy = ['src/browserconfig.xml',
                      'src/favicon.ico',
                      'src/manifest.json'
@@ -55,7 +54,9 @@ gulp.task('default', function(callback){
 
 
 gulp.task('build', function(callback){
-  runSequence( 'cleanProdFolder',
+  runSequence( 'cleanSrcCompiledFiles',
+              ['compileSassToCss', 'bundleJSfiles'],
+              'cleanProdFolder',
               [ 'compressImages',
                 'copyFiles',
                 'cleanHtml',
