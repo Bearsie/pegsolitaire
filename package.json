@@ -2,9 +2,12 @@
   "name": "pegsolitaire",
   "version": "1.0.0",
   "description": "A one player game, which objective is to empty the game board in a way that only one peg remains.",
-  "main": "docs/index.html",
+  "engines": {
+    "yarn": "1.12.3"
+  },
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "heroku-postbuild": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -38,5 +41,8 @@
     "gulp-sourcemaps": "^2.6.2",
     "pump": "^2.0.0",
     "run-sequence": "^2.2.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
